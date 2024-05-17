@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangalore House Price Prediction</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #result {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bangalore House Price Prediction</h2>
+    <label for="total_sqft">Total Square Feet:</label>
+    <input type="number" id="total_sqft" placeholder="Enter total square feet">
+
+    <label for="bhk">Number of Bedrooms:</label>
+    <input type="number" id="bhk" placeholder="Enter number of bedrooms">
+
+    <label for="bath">Number of Bathrooms:</label>
+    <input type="number" id="bath" placeholder="Enter number of bathrooms">
+
+    <label for="location">Location:</label>
+    <select id="location">
+        <option value="Yelahanka">Yelahanka</option>
+        <option value="Hebbal">Hebbal</option>
+        <option value="8th Phase JP Nagar">8th Phase JP Nagar</option>
+        <option value="Sarjapur">Sarjapur</option>
+        <option value="KR Puram">KR Puram</option>
+        <option value="Kengeri">Kengeri</option>
+        <option value="Hennur Road">Hennur Road</option>
+        <option value="Arekere">Arekere</option>
+        <option value="Bettahalsoor">Bettahalsoor</option>
+    </select>
+
+    <button onclick="predictPrice()">Predict Price</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function predictPrice() {
+        var total_sqft = document.getElementById("total_sqft").value;
+        var bhk = document.getElementById("bhk").value;
+        var bath = document.getElementById("bath").value;
+        var location = document.getElementById("location").value;
+
+        var prices = {
+            "Yelahanka": {"size": "4 BHK", "total_sqft": "2100 - 2850", "bath": 4.0, "price": 186.000, "bhk": 4},
+            "Hebbal": {"size": "4 BHK", "total_sqft": "3067 - 8156", "bath": 4.0, "price": 477.000, "bhk": 4},
+            "8th Phase JP Nagar": {"size": "2 BHK", "total_sqft": "1042 - 1105", "bath": 2.0, "price": 54.005, "bhk": 2},
+            "Sarjapur": {"size": "2 BHK", "total_sqft": "1145 - 1340", "bath": 2.0, "price": 43.490, "bhk": 2},
+            "KR Puram": {"size": "2 BHK", "total_sqft": "1015 - 1540", "bath": 2.0, "price": 56.800, "bhk": 2},
+            "Kengeri": {"size": "1 BHK", "total_sqft": "34.46Sq. Meter", "bath": 1.0, "price": 18.500, "bhk": 1},
+            "Hennur Road": {"size": "2 BHK", "total_sqft": "1195 - 1440", "bath": 2.0, "price": 63.770, "bhk": 2},
+            "Arekere": {"size": "9 Bedroom", "total_sqft": "4125Perch", "bath": 9.0, "price": 265.000, "bhk": 9},
+            "Bettahalsoor": {"size": "4 Bedroom", "total_sqft": "3090 - 5002", "bath": 4.0, "price": 445.000, "bhk": 4}
+        };
+
+        var predicted_price = prices[location].price;
+
+        document.getElementById("result").innerHTML = "Estimated Price: $" + predicted_price;
+    }
+</script>
+
+</body>
+</html>
